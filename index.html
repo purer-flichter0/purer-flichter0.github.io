@@ -1,2 +1,199 @@
-<h1>Hello world</h1>
-<p>My website is working.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CLASSIFIED ARCHIVE // GS-07</title>
+
+<style>
+body {
+margin: 0;
+font-family: "Courier New", monospace;
+background: url("background.jpg") no-repeat center center fixed;
+background-size: cover;
+color: #00ff9d;
+}
+
+.overlay {
+position: fixed;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.85);
+z-index: 1;
+}
+
+/* LOGIN */
+#login {
+position: fixed;
+z-index: 5;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background: black;
+border: 1px solid #00ff9d;
+padding: 25px;
+width: 320px;
+box-shadow: 0 0 20px #00ff9d;
+}
+
+input {
+width: 100%;
+margin: 8px 0;
+padding: 10px;
+background: black;
+border: 1px solid #00ff9d;
+color: #00ff9d;
+}
+
+button {
+width: 100%;
+padding: 10px;
+background: #00ff9d;
+border: none;
+font-weight: bold;
+cursor: pointer;
+}
+
+/* MAIN */
+#main {
+display: none;
+position: relative;
+z-index: 2;
+padding: 30px;
+}
+
+.header {
+border-bottom: 1px solid #00ff9d;
+margin-bottom: 20px;
+}
+
+h1 { margin: 0; }
+
+.grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+gap: 15px;
+}
+
+.file {
+border: 1px solid #00ff9d;
+padding: 15px;
+background: rgba(0,0,0,0.7);
+cursor: pointer;
+transition: 0.2s;
+}
+
+.file:hover {
+background: rgba(0,255,157,0.1);
+transform: scale(1.03);
+}
+
+/* JUMPSCARE */
+#jumpscare {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: none;
+z-index: 9999;
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- SOUNDS -->
+<audio id="meow" src="meow.mp3"></audio>
+<audio id="swoosh" src="swoosh.mp3"></audio>
+
+<!-- JUMPSCARE IMAGE -->
+<img id="jumpscare" src="meme.jpg">
+
+<!-- LOGIN -->
+<div id="login">
+<h3>🔒 CLASSIFIED ACCESS TERMINAL</h3>
+<p>GEORGE SMITH // CLEARANCE LEVEL 4</p>
+
+<input placeholder="AGENT ID">
+<input type="password" placeholder="ACCESS CODE">
+
+<button onclick="unlock()">INITIATE ACCESS</button>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+
+<div class="header">
+<h1>CLASSIFIED ARCHIVE SYSTEM</h1>
+<p>USER: GEORGE SMITH // STATUS: MONITORED</p>
+</div>
+
+<div class="grid">
+
+<div class="file" onclick="openFile('photos.html')">
+📸 PHOTO DOSSIER
+</div>
+
+<div class="file" onclick="openFile('friends.html')">
+👥 FRIEND RECORDS
+</div>
+
+<div class="file" onclick="openFile('memes.html')">
+💀 MEME VAULT
+</div>
+
+<div class="file" onclick="diagnostic()">
+⚙️ SYSTEM DIAGNOSTIC
+</div>
+
+</div>
+
+</div>
+
+<script>
+function unlock() {
+play('swoosh');
+document.getElementById("login").style.display = "none";
+document.getElementById("main").style.display = "block";
+}
+
+function play(id) {
+const a = document.getElementById(id);
+if (a) { a.currentTime = 0; a.play(); }
+}
+
+function openFile(page) {
+play('meow');
+
+if (Math.random() < 0.25) {
+jumpscare();
+setTimeout(() => window.location = page, 1200);
+} else {
+window.location = page;
+}
+}
+
+function diagnostic() {
+play('swoosh');
+alert("SYSTEM STATUS: EVERYTHING IS FINE (probably)");
+}
+
+function jumpscare() {
+const img = document.getElementById("jumpscare");
+
+const memes = ["meme.jpg", "meme2.jpg"];
+img.src = memes[Math.floor(Math.random() * memes.length)];
+
+img.style.display = "block";
+
+setTimeout(() => {
+img.style.display = "none";
+}, 1200);
+}
+</script>
+
+</body>
+</html>
