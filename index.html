@@ -1,674 +1,1159 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
+
 <head>
+
 <meta charset="UTF-8">
-<title>BUTTCHECKS // CLASSIFIED</title>
+
+<title>BUTTCHEEKS // CLASSIFIED</title>
+
 
 <style>
 
+
 body {
+
 margin: 0;
+
 font-family: "Courier New", monospace;
+
 background: url("background.jpg") no-repeat center center fixed;
+
 background-size: cover;
+
 color: #00ff9d;
+
 overflow-x: hidden;
+
 }
+
 
 /* OVERLAY */
 
+
 .overlay {
+
 position: fixed;
+
 width: 100%;
+
 height: 100%;
+
 background: rgba(0,0,0,0.85);
+
 z-index: 1;
+
 }
+
 
 /* TIMER */
 
+
 #timer {
+
 position: fixed;
+
 top: 15px;
+
 right: 15px;
+
 z-index: 100000;
+
 background: rgba(0,0,0,0.85);
+
 border: 1px solid #00ff9d;
+
 color: #00ff9d;
+
 padding: 10px 15px;
+
 font-family: "Courier New", monospace;
+
 box-shadow: 0 0 10px #00ff9d;
+
 }
+
 
 /* LOGIN */
 
+
 #login {
+
 position: fixed;
+
 z-index: 5;
+
 top: 50%;
+
 left: 50%;
+
 transform: translate(-50%, -50%);
+
 background: black;
+
 border: 1px solid #00ff9d;
+
 padding: 25px;
+
 width: 320px;
+
 box-shadow: 0 0 20px #00ff9d;
+
 text-align: center;
+
 animation: flicker 2s infinite alternate;
+
 }
+
 
 @keyframes flicker {
+
 0% { opacity: 1; }
+
 50% { opacity: 0.92; }
+
 100% { opacity: 1; }
+
 }
+
 
 input {
+
 width: 100%;
+
 margin: 8px 0;
+
 padding: 10px;
+
 background: black;
+
 border: 1px solid #00ff9d;
+
 color: #00ff9d;
+
 font-family: "Courier New", monospace;
+
 box-sizing: border-box;
+
 }
+
 
 button {
+
 width: 100%;
+
 padding: 10px;
+
 background: #00ff9d;
+
 border: none;
+
 font-weight: bold;
+
 cursor: pointer;
+
 font-family: "Courier New", monospace;
+
 transition: 0.2s;
+
 }
 
+
 button:hover {
+
 background: white;
+
 }
+
 
 /* MAIN */
 
+
 #main {
+
 display: none;
+
 position: relative;
+
 z-index: 2;
+
 padding: 30px;
+
 }
+
 
 /* HEADER */
 
+
 .header {
+
 border-bottom: 1px solid #00ff9d;
+
 margin-bottom: 30px;
+
 text-align: center;
+
 padding-bottom: 20px;
+
 }
+
 
 .header h1 {
+
 font-size: 48px;
+
 margin-bottom: 10px;
+
 letter-spacing: 4px;
+
 }
 
+
 .header p {
+
 font-size: 18px;
+
 color: #7fffd4;
+
 }
+
 
 /* LOGOUT */
 
+
 .logoutBtn {
+
 width: 260px;
+
 display: block;
+
 margin: 0 auto 30px auto;
+
 background: black;
+
 color: #00ff9d;
+
 border: 1px solid #00ff9d;
+
 }
 
+
 .logoutBtn:hover {
+
 background: #00ff9d;
+
 color: black;
+
 box-shadow: 0 0 15px #00ff9d;
+
 }
+
 
 /* GRID */
 
+
 .grid {
+
 display: grid;
+
 grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+
 gap: 20px;
+
 }
+
 
 .file {
+
 border: 1px solid #00ff9d;
+
 padding: 25px;
+
 background: rgba(0,0,0,0.7);
+
 cursor: pointer;
+
 transition: 0.2s;
+
 font-size: 18px;
+
 text-align: center;
+
 }
 
+
 .file:hover {
+
 background: rgba(0,255,157,0.1);
+
 transform: scale(1.03);
+
 box-shadow: 0 0 15px #00ff9d;
+
 }
+
 
 /* HOME IMAGE FIXED */
 
+
 .homeImageBox {
+
 margin-top: 50px;
+
 width: 100%;
+
 display: flex;
+
 justify-content: center;
+
 align-items: center;
+
 }
 
+
 .homeImage {
+
 width: auto;
+
 max-width: 95%;
+
 max-height: 700px;
+
 height: auto;
+
 display: block;
+
 border: 2px solid #00ff9d;
+
 box-shadow:
+
 0 0 10px #00ff9d,
+
 0 0 25px #00ff9d44;
+
 filter: contrast(1.05) brightness(0.95);
+
 background: black;
+
 }
+
 
 /* ABOUT SECTION */
 
+
 .aboutSection {
+
 max-width: 1000px;
+
 margin: 50px auto;
+
 padding: 30px;
+
 background: rgba(0,0,0,0.75);
+
 border: 1px solid #00ff9d;
+
 box-shadow: 0 0 20px #00ff9d;
+
 line-height: 1.8;
+
 position: relative;
+
 z-index: 2;
+
 }
 
+
 .aboutSection h2 {
+
 font-size: 36px;
+
 margin-bottom: 20px;
+
 text-align: center;
+
 letter-spacing: 3px;
+
 }
+
 
 /* FOOTER */
 
+
 footer {
+
 margin-top: 60px;
+
 padding: 30px;
+
 text-align: center;
+
 border-top: 1px solid #00ff9d;
+
 background: rgba(0,0,0,0.8);
+
 font-size: 14px;
+
 line-height: 1.8;
+
 color: #7fffd4;
+
 position: relative;
+
 z-index: 2;
+
 }
+
 
 /* JUMPSCARE */
 
+
 #jumpscare {
+
 position: fixed;
+
 top: 50%;
+
 left: 50%;
+
 transform: translate(-50%, -50%);
+
 max-width: 70%;
+
 max-height: 70%;
+
 display: none;
+
 z-index: 9999;
+
 border: 3px solid #00ff9d;
+
 box-shadow: 0 0 30px #00ff9d;
+
 }
+
 
 #calumText {
+
 position: fixed;
+
 top: 78%;
+
 left: 50%;
+
 transform: translateX(-50%);
+
 display: none;
+
 z-index: 10000;
+
 font-size: 42px;
+
 font-weight: bold;
+
 letter-spacing: 4px;
+
 padding: 18px 30px;
+
 background: rgba(0,0,0,0.85);
+
 border: 3px solid #00ff9d;
+
 color: #00ff9d;
+
 box-shadow: 0 0 25px #00ff9d;
+
 animation: pulse 0.4s infinite alternate;
+
 }
 
+
 @keyframes pulse {
+
 from {
+
 transform: translateX(-50%) scale(1);
+
 }
+
 to {
+
 transform: translateX(-50%) scale(1.05);
+
 }
+
 }
+
 
 /* DIAGNOSTICS */
 
+
 #diagnosticPopup {
+
 display: none;
+
 position: fixed;
+
 top: 0;
+
 left: 0;
+
 width: 100%;
+
 height: 100%;
+
 background: rgba(0,0,0,0.92);
+
 z-index: 99999;
+
 justify-content: center;
+
 align-items: center;
+
 }
+
 
 .popupBox {
+
 width: 500px;
+
 max-width: 90%;
+
 background: black;
+
 border: 2px solid #00ff9d;
+
 padding: 25px;
+
 text-align: center;
+
 box-shadow: 0 0 25px #00ff9d;
+
 }
 
+
 .popupImage {
+
 width: 100%;
+
 margin-bottom: 20px;
+
 border: 1px solid #00ff9d;
+
 }
+
 
 /* REWARD */
 
+
 #rewardPrompt {
+
 display:none;
+
 position:fixed;
+
 top:0;
+
 left:0;
+
 width:100%;
+
 height:100%;
+
 background:rgba(0,0,0,0.9);
+
 z-index:999999;
+
 justify-content:center;
+
 align-items:center;
+
 }
+
 
 .rewardBox {
+
 background:black;
+
 border:1px solid #00ff9d;
+
 padding:30px;
+
 text-align:center;
+
 box-shadow:0 0 20px #00ff9d;
+
 }
 
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="overlay"></div>
 
+
 <div id="timer">
+
 Reward unlocks in: 10:00
+
 </div>
+
 
 <!-- REWARD POPUP -->
 
+
 <div id="rewardPrompt">
+
 
 <div class="rewardBox">
 
+
 <h2>🎁 REWARD READY</h2>
 
+
 <p>
+
 You stayed on the homepage for 10 minutes.
+
 </p>
 
+
 <button onclick="goReward()">
+
 CLAIM REWARD
+
 </button>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 <!-- AUDIO -->
 
+
 <audio id="meow" preload="auto">
+
 <source src="meow.mp3" type="audio/mpeg">
+
 </audio>
+
 
 <audio id="swoosh" preload="auto">
+
 <source src="swoosh.mp3" type="audio/mpeg">
+
 </audio>
 
+
 <audio id="alarm" preload="auto">
+
 <source src="alarm.mp3" type="audio/mpeg">
+
 </audio>
+
 
 <!-- JUMPSCARE -->
 
+
 <img id="jumpscare" src="calum.jpeg">
 
+
 <div id="calumText">
+
 YOU GOT CALUMMMMED
+
 </div>
+
 
 <!-- LOGIN -->
 
+
 <div id="login">
 
-<h2>🍑 BUTTCHECKS SECURE LOGIN</h2>
+
+<h2>🍑 BUTTCHEEKS SECURE LOGIN</h2>
+
 
 <p>CLEARANCE LEVEL: THICC</p>
 
+
 <input placeholder="AGENT ID">
+
 
 <input type="password" placeholder="ACCESS CODE">
 
+
 <button onclick="unlock()">
+
 INITIATE ACCESS
+
 </button>
 
+
 </div>
+
 
 <!-- MAIN -->
 
+
 <div id="main">
+
 
 <div class="header">
 
-<h1>PROJECT: BUTTCHECKS</h1>
+
+<h1>PROJECT: BUTTCHEEKS</h1>
+
 
 <p>EXTREME CHEEK ACTIVITY DETECTED</p>
 
+
 </div>
 
+
 <button class="logoutBtn" onclick="logout()">
+
 ⬅ RETURN TO LOGIN
+
 </button>
+
 
 <div class="grid">
 
+
 <div class="file" onclick="openFile('gallery.html')">
+
 📸 SMITH GALLERY
+
 </div>
+
 
 <div class="file" onclick="openFile('socials.html')">
+
 🌐 SOCIAL MEDIA
+
 </div>
+
 
 <div class="file" onclick="openFile('game.html')">
+
 🎮 BUTT CLICKER
+
 </div>
+
 
 <div class="file" onclick="openFile('music.html')">
+
 🎵 MUSIC (Its not ASS)
+
 </div>
+
 
 <div class="file" onclick="diagnostic()">
+
 ⚙️ SYSTEM DIAGNOSTICS
-</div>
 
 </div>
+
+
+</div>
+
 
 <!-- FIXED IMAGE -->
 
+
 <div class="homeImageBox">
+
 
 <img src="home.jpeg" class="homeImage">
 
+
 </div>
+
 
 <!-- ABOUT -->
 
+
 <div class="aboutSection">
 
-<h2>ABOUT BUTTCHECKS</h2>
+
+<h2>ABOUT BUTTCHEEKS</h2>
+
 
 <p>
-BUTTCHECKS is a classified multimedia surveillance initiative dedicated to
+
+BUTTCHEEKS is a classified multimedia surveillance initiative dedicated to
+
 advanced cheek detection systems, meme-grade intelligence gathering, and
+
 high-security digital entertainment experiences.
+
 </p>
 
+
 <p>
+
 Founded in 2026, the organisation continues to lead the industry in
+
 experimental THICC-response technologies and emergency cake containment
+
 protocols across international networks.
+
 </p>
 
+
 <p>
+
 All systems are monitored 24/7 by certified agents operating under
+
 Clearance Level THICC.
+
 </p>
+
 
 </div>
+
 
 <!-- FOOTER -->
 
+
 <footer>
 
-<p>© 2026 BUTTCHECKS INDUSTRIES</p>
+
+<p>© 2026 BUTTCHEEKS INDUSTRIES</p>
+
 
 <p>
-Secure Surveillance Division • London, UK
+
+Secure Surveillance Division • Hawks Green, UK
+
 </p>
 
+
 <p>
-contact@buttchecks-secure.net
+
+contact@buttcheeks-secure.net
+
 </p>
+
 
 </footer>
 
+
 </div>
+
 
 <!-- DIAGNOSTIC POPUP -->
 
+
 <div id="diagnosticPopup">
+
 
 <div class="popupBox">
 
+
 <h2>⚠ SYSTEM ALERT ⚠</h2>
+
 
 <img src="alarm.jpg" class="popupImage">
 
+
 <p>
+
 TOO MUCH CAKE DETECTED<br><br>
+
 CHEEK LEVELS ARE CRITICAL<br><br>
+
 INITIATING EMERGENCY CONTAINMENT...
+
 </p>
 
+
 <button onclick="closePopup()">
+
 CLOSE ALERT
+
 </button>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 <script>
 
+
 /* AUDIO */
+
 
 function play(id) {
 
+
 const audio = document.getElementById(id);
+
 
 if (!audio) return;
 
+
 audio.pause();
+
 audio.currentTime = 0;
 
+
 audio.play().catch(err => {
+
 console.log("Audio blocked:", err);
+
 });
 
+
 }
+
 
 /* LOGIN */
 
+
 function unlock() {
+
 
 play("swoosh");
 
+
 document.getElementById("login").style.display = "none";
+
 document.getElementById("main").style.display = "block";
+
 
 startTimer();
 
+
 }
+
 
 /* LOGOUT */
 
+
 function logout() {
+
 
 play("swoosh");
 
+
 document.getElementById("main").style.display = "none";
+
 document.getElementById("login").style.display = "block";
+
 
 clearInterval(interval);
 
+
 document.getElementById("timer").textContent =
+
 "Reward unlocks in: 10:00";
 
+
 }
+
 
 /* FILE OPEN */
 
+
 function openFile(page) {
+
 
 play("meow");
 
+
 /* 1 IN 10 CHANCE */
+
 if (Math.random() < 0.1) {
+
 
 jumpscare();
 
+
 setTimeout(() => {
+
 window.location.href = page;
+
 }, 1500);
+
 
 } else {
 
+
 setTimeout(() => {
+
 window.location.href = page;
+
 }, 1200);
 
-}
 
 }
+
+
+}
+
 
 /* DIAGNOSTIC */
 
+
 function diagnostic() {
 
+
 play("alarm");
+
 
 document.getElementById("diagnosticPopup").style.display = "flex";
 
+
 }
+
 
 function closePopup() {
 
+
 document.getElementById("diagnosticPopup").style.display = "none";
 
+
 }
+
 
 /* JUMPSCARE */
 
+
 function jumpscare() {
 
+
 const img = document.getElementById("jumpscare");
+
 const text = document.getElementById("calumText");
 
+
 img.style.display = "block";
+
 text.style.display = "block";
+
 
 play("alarm");
 
+
 setTimeout(() => {
 
+
 img.style.display = "none";
+
 text.style.display = "none";
+
 
 }, 1500);
 
+
 }
+
 
 /* TIMER */
 
+
 let timeLimit = 600;
+
 let interval;
+
 
 function startTimer() {
 
+
 const timerEl = document.getElementById("timer");
 
+
 clearInterval(interval);
+
 
 let startTime = Date.now();
 
+
 interval = setInterval(() => {
 
+
 let elapsed =
+
 Math.floor((Date.now() - startTime) / 1000);
+
 
 let remaining = timeLimit - elapsed;
 
+
 if (remaining <= 0) {
+
 
 clearInterval(interval);
 
+
 timerEl.textContent = "Reward available!";
+
 
 showRewardPrompt();
 
+
 return;
+
 
 }
 
+
 let minutes = Math.floor(remaining / 60);
+
 let seconds = remaining % 60;
 
+
 timerEl.textContent =
-`Reward unlocks in: ${minutes}:${seconds.toString().padStart(2, "0")}`;
+
+Reward unlocks in: ${minutes}:${seconds.toString().padStart(2, "0")};
+
 
 }, 1000);
 
+
 }
+
 
 /* REWARD */
 
+
 function showRewardPrompt() {
+
 
 document.getElementById("rewardPrompt").style.display = "flex";
 
+
 }
+
 
 function goReward() {
 
+
 window.location.href = "reward.html";
+
 
 }
 
+
 </script>
 
+
 </body>
+
 </html>
+
