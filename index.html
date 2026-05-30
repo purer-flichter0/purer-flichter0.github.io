@@ -479,7 +479,7 @@ Secure Surveillance Division • Hawks Green, UK
 </p>
 
 <p>
-contact@buttcheecks.online
+contact@buttcheeks.online
 </p>
 
 </footer>
@@ -535,7 +535,48 @@ function unlock() {
 
 play("swoosh");
 
+/* GET INPUT VALUES */
+
+const agent =
+document.querySelectorAll("input")[0]
+.value
+.toLowerCase()
+.trim();
+
+const code =
+document.querySelectorAll("input")[1]
+.value
+.toLowerCase()
+.trim();
+
+/* SECRET LOGIN */
+
+if (
+agent === "george" &&
+code === "bumworms"
+) {
+
+window.location.href = "secret.html";
+
+return;
+
+}
+
+if (
+agent === "ellis" &&
+code === "cheating"
+) {
+
+window.location.href = "ellis.html";
+
+return;
+
+}
+
+/* NORMAL FAKE LOGIN */
+
 document.getElementById("login").style.display = "none";
+
 document.getElementById("main").style.display = "block";
 
 startTimer();

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>ELLIS & RANGER // CLASSIFIED</title>
+
+<style>
+
+body {
+margin: 0;
+font-family: "Courier New", monospace;
+background: url("background.jpg") no-repeat center center fixed;
+background-size: cover;
+color: #00ff9d;
+overflow-x: hidden;
+}
+
+.overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0,0,0,0.85);
+z-index: 1;
+pointer-events: none;
+}
+
+.main {
+position: relative;
+z-index: 2;
+padding: 40px 20px;
+max-width: 1200px;
+margin: auto;
+}
+
+.header {
+text-align: center;
+margin-bottom: 50px;
+border-bottom: 1px solid #00ff9d;
+padding-bottom: 25px;
+}
+
+.header h1 {
+font-size: 54px;
+letter-spacing: 5px;
+margin-bottom: 10px;
+text-shadow: 0 0 15px #00ff9d;
+}
+
+.header p {
+font-size: 18px;
+color: #7fffd4;
+}
+
+.statsGrid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 25px;
+margin-bottom: 50px;
+}
+
+.card {
+background: rgba(0,0,0,0.75);
+border: 1px solid #00ff9d;
+padding: 25px;
+box-shadow: 0 0 20px #00ff9d33;
+text-align: center;
+transition: 0.2s;
+}
+
+.card:hover {
+transform: scale(1.02);
+box-shadow: 0 0 25px #00ff9d66;
+}
+
+.card h2 {
+font-size: 22px;
+margin-bottom: 20px;
+letter-spacing: 2px;
+}
+
+.counter {
+font-size: 56px;
+font-weight: bold;
+text-shadow: 0 0 15px #00ff9d;
+margin-top: 10px;
+}
+
+.imageRow {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 25px;
+margin-bottom: 50px;
+}
+
+.imageBox {
+height: 450px;
+overflow: hidden;
+padding: 15px;
+background: rgba(0,0,0,0.75);
+border: 1px solid #00ff9d;
+box-sizing: border-box;
+}
+
+.imageBox img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+border: 2px solid #00ff9d;
+box-shadow: 0 0 20px #00ff9d55;
+}
+
+.messageBox {
+background: rgba(0,0,0,0.75);
+border: 1px solid #00ff9d;
+padding: 30px;
+line-height: 1.8;
+font-size: 18px;
+margin-bottom: 40px;
+}
+
+.messageBox h2 {
+text-align: center;
+font-size: 32px;
+margin-top: 0;
+margin-bottom: 20px;
+}
+
+.backBtn {
+display: block;
+width: 300px;
+margin: auto;
+padding: 14px;
+background: black;
+border: 1px solid #00ff9d;
+color: #00ff9d;
+cursor: pointer;
+font-family: "Courier New", monospace;
+transition: 0.2s;
+}
+
+.backBtn:hover {
+background: #00ff9d;
+color: black;
+}
+
+footer {
+margin-top: 60px;
+padding: 25px;
+text-align: center;
+border-top: 1px solid #00ff9d;
+color: #7fffd4;
+font-size: 14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<div class="main">
+
+<div class="header">
+<h1>ELLIS & RANGER</h1>
+<p>CLASSIFIED FRIENDSHIP SURVEILLANCE ARCHIVE</p>
+</div>
+
+<div class="statsGrid">
+
+<div class="card">
+<h2>🚿 SHOWERS THIS WEEK</h2>
+<div class="counter" id="showers">0</div>
+</div>
+
+<div class="card">
+<h2>📍 RANGER LOCATION</h2>
+<div class="counter" id="location">UNKNOWN</div>
+</div>
+
+<div class="card">
+<h2>🦠 PARASITES IN RANGER'S HAIR</h2>
+<div class="counter">387</div>
+</div>
+
+<div class="card">
+<h2>😡 TIMES ELLIS PISSES ME OFF</h2>
+<div class="counter">∞</div>
+</div>
+
+<div class="card">
+<h2>💔 RANGER BREAKUP CHANCE (BY SEPTEMBER)</h2>
+<div class="counter" id="breakupChance">0%</div>
+</div>
+
+<div class="card">
+<h2>💥 DAYS SINCE LAST CRASHOUT</h2>
+<div class="counter" id="crashout">0</div>
+</div>
+
+</div>
+
+<div class="imageRow">
+
+<div class="imageBox">
+<img src="ellis.jpeg">
+</div>
+
+<div class="imageBox">
+<img src="ranger.jpeg">
+</div>
+
+</div>
+
+<div class="messageBox">
+
+<h2>OBSERVATION NOTES</h2>
+
+<p>
+ELLIS CAN NOT FIND THIS OUT, Classified monitoring active. Behaviour patterns unstable.
+Hygiene metrics updating automatically. TOO TIGHT CONFIMED.
+</p>
+
+</div>
+
+<button class="backBtn" onclick="window.location.href='index.html'">
+⬅ RETURN TO LOGIN
+</button>
+
+<footer>
+ELLIS & RANGER INTELLIGENCE NETWORK • CLASSIFIED NODE
+</footer>
+
+</div>
+
+<script>
+
+/* =========================
+   SHOWERS (UNCHANGED LOCAL SYSTEM)
+========================= */
+
+function getWeekKey(date) {
+  const start = new Date(date);
+  const day = start.getDay();
+  start.setDate(start.getDate() - day);
+  start.setHours(0,0,0,0);
+  return start.getTime();
+}
+
+const now = new Date();
+
+const weekKey = getWeekKey(now);
+
+let storedWeek = localStorage.getItem("showerWeek");
+let showers = parseInt(localStorage.getItem("showers") || "0");
+
+if (storedWeek !== weekKey.toString()) {
+  storedWeek = weekKey;
+  showers = 0;
+
+  localStorage.setItem("showerWeek", storedWeek);
+  localStorage.setItem("showers", showers);
+}
+
+const todayKey = now.toDateString();
+let lastUpdate = localStorage.getItem("showerLastUpdate");
+
+if (lastUpdate !== todayKey) {
+
+  if (showers < 4) {
+    if (Math.random() < 0.40) showers += 1;
+    if (showers > 4) showers = 4;
+
+    localStorage.setItem("showers", showers);
+  }
+
+  localStorage.setItem("showerLastUpdate", todayKey);
+}
+
+document.getElementById("showers").textContent = showers;
+
+/* =========================
+   LOCATION
+========================= */
+
+const locations = [
+  "AT HOME",
+  "UNKNOWN",
+  "IN THE USA",
+  "OUT CHEATING"
+];
+
+const locSeed =
+now.getFullYear() + now.getMonth() + now.getDate();
+
+document.getElementById("location").textContent =
+locations[locSeed % locations.length];
+
+/* =========================
+   CRASHOUT (UNCHANGED GLOBAL DAILY)
+========================= */
+
+let crashout = Math.max(0, Math.floor((now - new Date("2026-05-30")) / (1000*60*60*24)));
+
+document.getElementById("crashout").textContent = crashout;
+
+/* =========================
+   BREAKUP CHANCE (NEW SEEDED SYSTEM)
+========================= */
+
+/* stable daily seed */
+const seed =
+now.getFullYear() * 10000 +
+(now.getMonth() + 1) * 100 +
+now.getDate();
+
+/* deterministic pseudo-random */
+function seededRandom(n) {
+  const x = Math.sin(n) * 10000;
+  return x - Math.floor(x);
+}
+
+let breakupPercent = Math.floor(seededRandom(seed) * 100);
+
+/* small safety floor */
+if (breakupPercent < 5) breakupPercent = 5;
+
+document.getElementById("breakupChance").textContent =
+breakupPercent + "%";
+
+</script>
+
+</body>
+</html>
