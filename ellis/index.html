@@ -202,6 +202,11 @@ font-size: 14px;
 <div class="counter" id="crashout">0</div>
 </div>
 
+<div class="card">
+<h2>🎥 NUMBER OF SHIT REELS ELLIS SENDS US</h2>
+<div class="counter" id="shitReels">0</div>
+</div>
+
 </div>
 
 <div class="imageRow">
@@ -292,6 +297,7 @@ const locations = [
   "UNKNOWN",
   "IN THE USA",
   "OUT CHEATING"
+  
 ];
 
 const locSeed =
@@ -331,6 +337,25 @@ if (breakupPercent < 5) breakupPercent = 5;
 
 document.getElementById("breakupChance").textContent =
 breakupPercent + "%";
+
+/* =========================
+   SHIT REELS COUNTER
+========================= */
+
+const startCount = 3;
+
+/* Pick a starting date/time */
+const startDate = new Date("2026-06-02T00:00:00");
+
+/* Minutes since start */
+const minutesPassed =
+(Date.now() - startDate.getTime()) / (1000 * 60);
+
+/* Add 1 every 5 minutes */
+const reelsCount =
+startCount + Math.floor(minutesPassed / 4);
+
+document.getElementById("shitReels").textContent = reelsCount;
 
 </script>
 
